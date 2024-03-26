@@ -61,7 +61,7 @@ public class MenuPrincipal {
 
         } while(opt != 0);
     }
-
+//Submenu Funcionario
     public void subMenuFuncionario() {
         int opt;
 
@@ -124,3 +124,4 @@ public class MenuPrincipal {
         }
     }
 }
+//Submenu Clientes

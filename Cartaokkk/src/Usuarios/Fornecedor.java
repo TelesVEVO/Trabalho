@@ -36,20 +36,18 @@ public class Fornecedor extends PessoaJuridica implements InterfaceCadastro {
     @Override
     public void entrar(){
         System.out.println("Data de Cadastro: ");
-        String novaData = leia.next();
-        setDataCadastro(novaData);
+        setDataCadastro(leia.next());
 
         System.out.println("Site: ");
-        String novoSite = leia.next();
-        setSite(novoSite);
+        setSite(leia.next());
 
         System.out.println("Limite da Compra: ");
-        double novoLimite = leia.nextDouble();
-        setLimiteCompra(novoLimite);
+        setLimiteCompra(leia.nextDouble());
     }
 
     @Override
     public void imprimir(){
+        super.imprimir();
         System.out.println("Data de Cadastro: " + getDataCadastro());
         System.out.println("Site: " + getSite());
         System.out.println("Limite da Compra: " + getLimiteCompra());

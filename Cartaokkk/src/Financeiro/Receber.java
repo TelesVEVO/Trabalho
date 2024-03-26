@@ -6,7 +6,11 @@ import Usuarios.Cliente;
 public class Receber extends Financeiro implements InterfaceCadastro {
 
     private String nota_fiscal;
-    Cliente cliente;
+    private Cliente cliente;
+
+    public Receber(){
+        this.cliente = new Cliente();
+    }
 
     public String getNota_fiscal() {
         return nota_fiscal;
@@ -14,14 +18,6 @@ public class Receber extends Financeiro implements InterfaceCadastro {
 
     public void setNota_fiscal(String nota_fiscal) {
         this.nota_fiscal = nota_fiscal;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public double calcularTotal() {
@@ -32,23 +28,21 @@ public class Receber extends Financeiro implements InterfaceCadastro {
         super.entrar();
 
         System.out.println("Nota Fiscal: ");
-        String novaNota = leia.next();
-        setNota_fiscal(novaNota);
+        setNota_fiscal(leia.next());
 
-        System.out.println("Cliente: ");
-        cliente.entrar();
+        this.cliente.entrar();
     }
 
     @Override
     public void imprimir(){
 
-        if (getNota_fiscal() == null || getCliente() == null) {
+        if (getNota_fiscal() == null || this.cliente == null) {
             System.out.println("Não há dados suficientes para exibir o Fluxo de Caixa.");
             return;
         }
 
         System.out.println("Nota Fiscal: " + getNota_fiscal());
-        System.out.println("Cliente: " + getCliente());
+        this.cliente.imprimir();
         System.out.println("Total a Receber: " + calcularTotal());
     }
 }

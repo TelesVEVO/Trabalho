@@ -71,32 +71,25 @@ public class Endereco implements InterfaceCadastro {
     @Override
     public void entrar() {
         System.out.println("Logradouro: ");
-        String novoLogradouro = leia.next();
-        setLogradouro(novoLogradouro);
+        setLogradouro(leia.next());
 
         System.out.println("Número: ");
-        String novoNumero = leia.next();
-        setNumero(novoNumero);
+        setNumero(leia.next());
 
         System.out.println("Complemento: ");
-        String novoComplemento = leia.next();
-        setComplemento(novoComplemento);
+        setComplemento(leia.next());
 
         System.out.println("Bairro: ");
-        String novoBairro = leia.next();
-        setBairro(novoBairro);
+        setBairro(leia.next());
 
         System.out.println("Cidade: ");
-        String novaCidade = leia.next();
-        setCidade(novaCidade);
+        setCidade(leia.next());
 
         System.out.println("Estado: ");
-        String novoEstado = leia.next();
-        setEstado(novoEstado);
+        setEstado(leia.next());
 
         System.out.println("CEP: ");
-        int novoCep = leia.nextInt();
-        setCep(novoCep);
+        setCep(leia.nextInt());
     }
 
     @Override

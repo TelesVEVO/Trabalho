@@ -27,12 +27,10 @@ public class Telefone implements InterfaceCadastro {
     @Override
     public void entrar() {
         System.out.println("DDD: ");
-        int novoDdd = leia.nextInt();
-        setDdd(novoDdd);
+        setDdd(leia.nextInt());
 
         System.out.println("Número: ");
-        long novoNumero = leia.nextLong();
-        setNumero(novoNumero);
+        setNumero(leia.nextLong());
     }
 
     @Override

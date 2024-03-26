@@ -48,20 +48,16 @@ public class Funcionario extends PessoaFisica implements InterfaceCadastro  {
         super.entrar();
 
         System.out.println("Data de Admissão: ");
-        String novaDta = leia.next();
-        setDataAdmissao(novaDta);
+        setDataAdmissao(leia.next());
 
         System.out.println("Data de Demissão: ");
-        String novaDtd = leia.next();
-        setDataDemissao(novaDtd);
+        setDataDemissao(leia.next());
 
         System.out.println("CTPS: ");
-        String novoCtps = leia.next();
-        setCtps(novoCtps);
+        setCtps(leia.next());
 
         System.out.println("Salário: ");
-        double novoSalario = leia.nextDouble();
-        setSalario(novoSalario);
+        setSalario(leia.nextDouble());
     }
 
     @Override

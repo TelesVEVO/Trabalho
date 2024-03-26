@@ -39,16 +39,13 @@ public class PessoaFisica extends Pessoa implements InterfaceCadastro {
         super.entrar();
 
         System.out.println("CPF: ");
-        String novoCpf = leia.next();
-        setCpf(novoCpf);
+        setCpf(leia.next());
 
         System.out.println("RG: ");
-        String novoRg = leia.next();
-        setRg(novoRg);
+        setRg(leia.next());
 
         System.out.println("Emissor: ");
-        String novoEmissor = leia.next();
-        setEmissor(novoEmissor);
+        setEmissor(leia.next());
     }
 
     @Override

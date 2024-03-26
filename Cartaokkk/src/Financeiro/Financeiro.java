@@ -104,44 +104,34 @@ public class Financeiro implements InterfaceCadastro {
     @Override
     public void entrar() {
         System.out.println("ID: ");
-        int novoId = leia.nextInt();
-        setId(novoId);
+        setId(leia.nextInt());
 
         System.out.println("Número: ");
-        int novoNumero = leia.nextInt();
-        setNumero(novoNumero);
+        setNumero(leia.nextInt());
 
         System.out.println("Emissão: ");
-        String novaEmissao = leia.next();
-        setEmissao(novaEmissao);
+        setEmissao(leia.next());
 
         System.out.println("Vencimento: ");
-        String novoVencimento = leia.next();
-        setVencimento(novoVencimento);
+        setVencimento(leia.next());
 
         System.out.println("Pagamento: ");
-        String novoPag = leia.next();
-        setPagamento(novoPag);
+        setPagamento(leia.next());
 
         System.out.println("Valor: ");
-        double novoValor = leia.nextDouble();
-        setValor(novoValor);
+        setValor(leia.nextDouble());
 
         System.out.println("Juros: ");
-        double novoJuros = leia.nextDouble();
-        setJuros(novoJuros);
+        setJuros(leia.nextDouble());
 
         System.out.println("Multa: ");
-        double novaMulta = leia.nextDouble();
-        setMulta(novaMulta);
+        setMulta(leia.nextDouble());
 
         System.out.println("Desconto: ");
-        double novoDesconto = leia.nextDouble();
-        setDesconto(novoDesconto);
+        setDesconto(leia.nextDouble());
 
         System.out.println("Total: ");
-        double novoTotal = leia.nextDouble();
-        setTotal(novoTotal);
+        setTotal(leia.nextDouble());
     }
 
     @Override

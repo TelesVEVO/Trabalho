@@ -4,13 +4,18 @@ import Infra.Endereco;
 import Infra.Telefone;
 import Interface.InterfaceCadastro;
 
-public class Pessoa implements InterfaceCadastro {
+public abstract class Pessoa implements InterfaceCadastro {
 
     private int id;
     private String nome;
     private String email;
-    Telefone telefone;
-    Endereco endereco;
+    private Telefone telefone;
+    private Endereco endereco;
+
+    public Pessoa() {
+       this.telefone = new Telefone();
+       this.endereco = new Endereco();
+    }
 
     public int getId() {
         return id;
@@ -36,42 +41,21 @@ public class Pessoa implements InterfaceCadastro {
         this.email = email;
     }
 
-    public Telefone getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
 
     @Override
     public void entrar() {
         System.out.println("ID: ");
-        int novoId = leia.nextInt();
-        setId(novoId);
+        setId(leia.nextInt());
 
         System.out.println("Nome: ");
-        String novoNome = leia.next();
-        setNome(novoNome);
+        setNome(leia.next());
 
         System.out.println("Email: ");
-        String novoEmail = leia.next();
-        setEmail(novoEmail);
+        setEmail(leia.next());
 
-        System.out.println("Telefone: ");
-        telefone.entrar();
+        this.telefone.entrar();
 
-        System.out.println("Endereço: ");
-        endereco.entrar();
+        this.endereco.entrar();
     }
 
     @Override
@@ -79,7 +63,7 @@ public class Pessoa implements InterfaceCadastro {
         System.out.println("ID: " + getId());
         System.out.println("Nome: " + getNome());
         System.out.println("Email: " + getEmail());
-        System.out.println("Telefone: " + getTelefone());
-        System.out.println("Endereço: " + getEndereco());
+        this.telefone.imprimir();
+        this.endereco.imprimir();
     }
 }

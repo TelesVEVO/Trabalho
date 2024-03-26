@@ -38,20 +38,18 @@ public class PessoaJuridica extends Pessoa implements InterfaceCadastro {
         super.entrar();
 
         System.out.println("CNPJ: ");
-        String novoCNPJ = leia.next();
-        setCnpj(novoCNPJ);
+        setCnpj(leia.next());
 
         System.out.println("Inscrição Estadual: ");
-        String novaInsc = leia.next();
-        setInscricaoEstadual(novaInsc);
+        setInscricaoEstadual(leia.next());
 
         System.out.println("Contato: ");
-        String novoContato = leia.next();
-        setContato(novoContato);
+        setContato(leia.next());
     }
 
     @Override
     public void imprimir(){
+        super.imprimir();
         System.out.println("CNPJ: " + getCnpj());
         System.out.println("Inscrição Estadual: " + getInscricaoEstadual());
         System.out.println("Contato: " + getContato());

@@ -6,7 +6,11 @@ import Usuarios.Fornecedor;
 public class Pagar extends Financeiro implements InterfaceCadastro {
 
     private String boleto;
-    Fornecedor fornecedor;
+    private Fornecedor fornecedor;
+
+    public Pagar(){
+        this.fornecedor = new Fornecedor();
+    }
 
     public String getBoleto() {
         return boleto;
@@ -14,14 +18,6 @@ public class Pagar extends Financeiro implements InterfaceCadastro {
 
     public void setBoleto(String boleto) {
         this.boleto = boleto;
-    }
-
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
     }
 
     public double calcularTotal() {
@@ -33,23 +29,21 @@ public class Pagar extends Financeiro implements InterfaceCadastro {
         super.entrar();
 
         System.out.println("Boleto: ");
-        String novoBoleto = leia.next();
-        setBoleto(novoBoleto);
+        setBoleto(leia.next());
 
-        System.out.println("Fornecedor");
-        fornecedor.entrar();
+        this.fornecedor.entrar();
     }
 
     @Override
     public void imprimir(){
 
-        if (getBoleto() == null || getFornecedor() == null) {
+        if (getBoleto() == null || this.fornecedor == null) {
             System.out.println("Não há dados suficientes para exibir o Fluxo de Caixa.");
             return;
         }
 
         System.out.println("Boleto: " + getBoleto());
-        System.out.println("Fornecedor: " + getFornecedor());
+        this.fornecedor.imprimir();
         System.out.println("Total a Pagar: " + calcularTotal());
     }
 }

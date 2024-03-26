@@ -9,6 +9,10 @@ public class Cliente extends PessoaJuridica implements InterfaceCadastro {
     Endereco enderecoCobranca;
     private double limiteCredito;
 
+    public Cliente(){
+        this.enderecoCobranca = new Endereco();
+    }
+
     public double getLimiteCredito() {
         return limiteCredito;
     }
@@ -17,31 +21,21 @@ public class Cliente extends PessoaJuridica implements InterfaceCadastro {
         this.limiteCredito = limiteCredito;
     }
 
-    public Endereco getEnderecoCobranca() {
-        return enderecoCobranca;
-    }
-
-    public void setEnderecoCobranca(Endereco enderecoCobranca) {
-        this.enderecoCobranca = enderecoCobranca;
-    }
-
     @Override
     public void entrar(){
 
         super.entrar();
 
         System.out.print("Limite de Crédito: ");
-        double novoLimite = leia.nextDouble();
-        setLimiteCredito(novoLimite);
+        setLimiteCredito(leia.nextDouble());
 
-        System.out.println("Endereço de Cobrança: ");
-        enderecoCobranca.entrar();
+        this.enderecoCobranca.entrar();
 
     }
 
     @Override
     public void imprimir(){
         System.out.println("Limite de Crédito: " + getLimiteCredito());
-        System.out.println("Endereço de Cobrança: " + getEnderecoCobranca());
+        this.enderecoCobranca.imprimir();
     }
 }
