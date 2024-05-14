@@ -24,6 +24,14 @@ public class Pagar extends Financeiro implements InterfaceCadastro {
         return getValor() + getJuros() - getDesconto();
     }
 
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
     @Override
     public void entrar(){
         super.entrar();

@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import static Interface.InterfaceCadastro.leia;
 
 public class MenuPrincipal {
-    private Receber receber;
-    private Pagar pagar;
     private ArrayList<Funcionario> funcionario;
     private ArrayList<Cliente> cliente;
     private ArrayList<Fornecedor> fornecedor;
@@ -23,8 +21,6 @@ public class MenuPrincipal {
         this.funcionario = new ArrayList<>();
         this.contasAReceber = new ArrayList<>();
         this.contasAPagar = new ArrayList<>();
-        this.receber = new Receber();
-        this.pagar = new Pagar();
     }
 
     /* Menu */
@@ -611,64 +607,156 @@ public class MenuPrincipal {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void subMenuContasPagar() {
-        int opcao;
+        int opt;
 
         do {
             System.out.println("\n==== SUBMENU CONTAS A PAGAR ====");
-            System.out.println("1. Incluir");
-            System.out.println("2. Alterar");
-            System.out.println("3. Consultar");
-            System.out.println("4. Excluir");
-            System.out.println("5. Voltar ao Menu Principal");
+            System.out.println("a. Incluir");
+            System.out.println("b. Alterar pelo número");
+            System.out.println("c. Consultar pelo CNPJ do Fornecedor");
+            System.out.println("d. Consultar pelo Número");
+            System.out.println("e. Consultar pelo Valor");
+            System.out.println("f. Consultar pelo Boleto");
+            System.out.println("g. Excluir pelo ID");
+            System.out.println("0. Voltar ao menu principal");
             System.out.print("Escolha uma opção: ");
 
-            opcao = leia.nextInt();
+            opt = leia.next().charAt(0);
 
-            switch(opcao) {
-                case 1:
-                    pagar.entrar();
+            switch (opt) {
+                case 'a':
+                    incluirContaPagar();
                     break;
-                case 2:
-                    alterarContasPagar();
+                case 'b':
+                    alterarContaPagar();
                     break;
-                case 3:
-                    pagar.imprimir();
+                case 'c':
+                    consultarPorCNPJFornecedorCP();
                     break;
-                case 4:
-                    deletarContasPagar();
+                case 'd':
+                    consultarPorNumeroCP();
                     break;
-                case 5:
-                    System.out.println("Retornando ao Menu Principal...");
+                case 'e':
+                    consultarPorValorCP();
+                    break;
+                case 'f':
+                    consultarPorBoleto();
+                    break;
+                case 'g':
+                    excluirContaPagar();
+                    break;
+                case '0':
+                    System.out.println("Retornando ao menu principal...");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");
                     break;
             }
-        } while(opcao != 5);
+        } while (opt != '0');
     }
 
-    private void alterarContasPagar() {
-        System.out.println("Digite o ID da conta a pagar que deseja alterar: ");
-        int idBusca = leia.nextInt();
+    private void incluirContaPagar() {
+        Pagar novaConta = new Pagar();
+        novaConta.entrar();
+        contasAPagar.add(novaConta);
+        System.out.println("Conta a pagar incluída com sucesso!");
+    }
 
-        if(pagar.getId() == idBusca) {
-            pagar.entrar();
-            System.out.println("Conta a pagar alterada com sucesso!");
-        } else {
-            System.out.println("Conta a pagar não encontrada!");
+    private void alterarContaPagar() {
+        System.out.println("Digite o número da conta a pagar que deseja alterar: ");
+        int numeroConta = leia.nextInt();
+        for (Pagar conta : contasAPagar) {
+            if (conta.getNumero() == numeroConta) {
+                conta.entrar(); // Aqui você pode implementar um método para alterar dados específicos da conta
+                System.out.println("Conta a pagar alterada com sucesso!");
+                return;
+            }
+        }
+        System.out.println("Conta a pagar não encontrada!");
+    }
+
+    private void consultarPorCNPJFornecedorCP() {
+        System.out.println("Digite o CNPJ do fornecedor: ");
+        String cnpj = leia.next();
+
+        boolean encontrada = false;
+        for (Pagar conta : contasAPagar) {
+            if (conta.getFornecedor().getCnpj().equals(cnpj)) {
+                conta.imprimir();
+                encontrada = true;
+            }
+        }
+
+        if (!encontrada) {
+            System.out.println("Nenhuma conta a pagar encontrada para o fornecedor com CNPJ " + cnpj + ".");
         }
     }
 
-    private void deletarContasPagar() {
+    private void consultarPorNumeroCP() {
+        System.out.println("Digite o número da conta a pagar: ");
+        int numeroConta = leia.nextInt();
+
+        boolean encontrada = false;
+        for (Pagar conta : contasAPagar) {
+            if (conta.getNumero() == numeroConta) {
+                conta.imprimir();
+                encontrada = true;
+                break;
+            }
+        }
+
+        if (!encontrada) {
+            System.out.println("Nenhuma conta a pagar encontrada com o número " + numeroConta + ".");
+        }
+    }
+
+    private void consultarPorValorCP() {
+        System.out.println("Digite o valor da conta a pagar: ");
+        double valor = leia.nextDouble();
+
+        boolean encontrada = false;
+        for (Pagar conta : contasAPagar) {
+            if (conta.getValor() == valor) {
+                conta.imprimir();
+                encontrada = true;
+            }
+        }
+
+        if (!encontrada) {
+            System.out.println("Nenhuma conta a pagar encontrada com o valor " + valor + ".");
+        }
+    }
+
+    private void consultarPorBoleto() {
+        System.out.println("Digite o número do boleto: ");
+        String boleto = leia.next();
+
+        boolean encontrada = false;
+        for (Pagar conta : contasAPagar) {
+            if (conta.getBoleto().equals(boleto)) {
+                conta.imprimir();
+                encontrada = true;
+            }
+        }
+
+        if (!encontrada) {
+            System.out.println("Nenhuma conta a pagar encontrada com o boleto " + boleto + ".");
+        }
+    }
+
+    private void excluirContaPagar() {
         System.out.println("Digite o ID da conta a pagar que deseja excluir: ");
-        int idBusca = leia.nextInt();
+        int id = leia.nextInt();
 
-        if(pagar.getId() == idBusca) {
-            pagar = null;
-            System.out.println("Conta a pagar excluída com sucesso!");
-        } else {
-            System.out.println("Conta a pagar não encontrada!");
+        for (int i = 0; i < contasAPagar.size(); i++) {
+            if (contasAPagar.get(i).getId() == id) {
+                contasAPagar.remove(i);
+                System.out.println("Conta a pagar excluída com sucesso!");
+                return;
+            }
         }
+
+        System.out.println("Conta a pagar não encontrada!");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -679,18 +767,6 @@ public class MenuPrincipal {
         double totalReceitas = 0;
         double totalDespesas = 0;
 
-        if(receber != null) {
-            totalReceitas = receber.getValor() + receber.getJuros() - receber.getDesconto();
-        }
-
-        if(pagar != null) {
-            totalDespesas = pagar.getValor() + pagar.getJuros() + pagar.getMulta() - pagar.getDesconto();
-        }
-
-        System.out.println("----- FLUXO DE CAIXA -----");
-        System.out.println("Receitas (Contas a Receber): R$" + totalReceitas);
-        System.out.println("Despesas (Contas a Pagar): R$" + totalDespesas);
-        System.out.println("Saldo Total: R$" + (totalReceitas - totalDespesas));
     }
 }
 

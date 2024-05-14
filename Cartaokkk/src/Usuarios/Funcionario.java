@@ -72,10 +72,4 @@ public class Funcionario extends PessoaFisica implements InterfaceCadastro  {
         System.out.println("Saláiro: " + getSalario());
     }
 
-    private void incluirFuncionario() {
-        Funcionario novoFuncionario = new Funcionario();
-        novoFuncionario.entrar();
-        funcionario.add(novoFuncionario);
-        System.out.println("Funcionário incluído com sucesso!");
-    }
 }
