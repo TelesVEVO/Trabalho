@@ -40,8 +40,6 @@ public abstract class Pessoa implements InterfaceCadastro {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
     @Override
     public void entrar() {
         System.out.println("ID: ");

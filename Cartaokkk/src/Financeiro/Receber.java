@@ -6,6 +6,7 @@ import Usuarios.Cliente;
 public class Receber extends Financeiro implements InterfaceCadastro {
 
     private String nota_fiscal;
+
     private Cliente cliente;
 
     public Receber(){
@@ -23,6 +24,15 @@ public class Receber extends Financeiro implements InterfaceCadastro {
     public double calcularTotal() {
         return getValor() + getJuros() - getDesconto();
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     @Override
     public void entrar(){
         super.entrar();

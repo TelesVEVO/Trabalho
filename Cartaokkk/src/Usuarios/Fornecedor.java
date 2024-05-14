@@ -6,7 +6,7 @@ import UserControl.PessoaJuridica;
 public class Fornecedor extends PessoaJuridica implements InterfaceCadastro {
 
     private String dataCadastro;
-    private String  site;
+    private String site;
     private double limiteCompra;
 
     public double getLimiteCompra() {

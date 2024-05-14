@@ -98,9 +98,6 @@ public class Financeiro implements InterfaceCadastro {
 
     private double total;
 
-
-
-
     @Override
     public void entrar() {
         System.out.println("ID: ");

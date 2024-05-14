@@ -3,8 +3,11 @@ package Usuarios;
 import Interface.InterfaceCadastro;
 import UserControl.PessoaFisica;
 
+import java.util.ArrayList;
+
 public class Funcionario extends PessoaFisica implements InterfaceCadastro  {
 
+    private ArrayList<Funcionario> funcionario;
     private String dataAdmissao;
     private String dataDemissao;
     private String ctps;
@@ -67,5 +70,12 @@ public class Funcionario extends PessoaFisica implements InterfaceCadastro  {
         System.out.println("Data de Demissão: " + getDataDemissao());
         System.out.println("CTPS: " + getCtps());
         System.out.println("Saláiro: " + getSalario());
+    }
+
+    private void incluirFuncionario() {
+        Funcionario novoFuncionario = new Funcionario();
+        novoFuncionario.entrar();
+        funcionario.add(novoFuncionario);
+        System.out.println("Funcionário incluído com sucesso!");
     }
 }
