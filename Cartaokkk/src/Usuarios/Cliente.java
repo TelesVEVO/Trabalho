@@ -35,6 +35,7 @@ public class Cliente extends PessoaJuridica implements InterfaceCadastro {
 
     @Override
     public void imprimir(){
+        super.imprimir();
         System.out.println("Limite de Crédito: " + getLimiteCredito());
         this.enderecoCobranca.imprimir();
     }

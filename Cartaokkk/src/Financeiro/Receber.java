@@ -36,6 +36,8 @@ public class Receber extends Financeiro implements InterfaceCadastro {
     @Override
     public void imprimir(){
 
+        super.imprimir();
+
         if (getNota_fiscal() == null || this.cliente == null) {
             System.out.println("Não há dados suficientes para exibir o Fluxo de Caixa.");
             return;

@@ -37,6 +37,7 @@ public class Pagar extends Financeiro implements InterfaceCadastro {
     @Override
     public void imprimir(){
 
+        super.imprimir();
         if (getBoleto() == null || this.fornecedor == null) {
             System.out.println("Não há dados suficientes para exibir o Fluxo de Caixa.");
             return;

@@ -35,6 +35,7 @@ public class Fornecedor extends PessoaJuridica implements InterfaceCadastro {
 
     @Override
     public void entrar(){
+        super.entrar();
         System.out.println("Data de Cadastro: ");
         setDataCadastro(leia.next());
 
